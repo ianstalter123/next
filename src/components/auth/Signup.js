@@ -36,120 +36,177 @@ class Signup extends Component {
     return (
       <Container>
 
-        <Item>
-          <Field
-            name="firstname"
-            component={Input}
-            placeholder="First name"
-          />
-        </Item>
+      <Item>
+      <Field
+      name="firstname"
+      component={Input}
+      placeholder="First name"
+      />
+      </Item>
 
-        <Item>
-          <Field
-            name="lastname"
-            component={Input}
-            placeholder="Last name"
-          />
-        </Item>
+      <Item>
+      <Field
+      name="lastname"
+      component={Input}
+      placeholder="Last name"
+      />
+      </Item>
 
-        <Item>
-          <Field
-            name="email"
-            component={Input}
-            placeholder="Email"
-            autoCapitalize={'none'}
-          />
-        </Item>
+      <Item>
+      <Field
+      name="email"
+      component={Input}
+      placeholder="Email"
+      autoCapitalize={'none'}
+      />
+      </Item>
 
-        <Item>
-          <Field
-            name="password"
-            component={Input}
-            secureTextEntry
-            placeholder="Password"
-          />
-        </Item>
+      <Item>
+      <Field
+      name="password"
+      component={Input}
+      secureTextEntry
+      placeholder="Password"
+      />
+      </Item>
 
-        <Item>
-          <Field
-            name="repassword"
-            component={Input}
-            secureTextEntry
-            placeholder="Repeat Password"
-          />
-        </Item>
+      <Item>
+      <Field
+      name="repassword"
+      component={Input}
+      secureTextEntry
+      placeholder="Repeat Password"
+      />
+      </Item>
 
-        {this.props.authError
-          ?
-            <Text style={styles.error}>
-              {this.props.authError}
-            </Text>
-          :
-            <View />}
+      {this.props.authError
+        ?
+        <Text style={styles.error}>
+        {this.props.authError}
+        </Text>
+        :
+        <View />}
 
         {this.props.loading
           ?
-            <Item style={styles.loadingContainer}>
-              <Spinner />
-            </Item>
+          <Item style={styles.loadingContainer}>
+          <Spinner />
+          </Item>
           :
-            <Item>
-              <Button onPress={handleSubmit(this.handleFormSubmit)}>Log in</Button>
-            </Item>}
+          <Item>
+          <Button onPress={handleSubmit(this.handleFormSubmit)}>Log in</Button>
+          </Item>}
 
-        <Item>
+          <Item>
           <TouchableOpacity
-            onPress={() => Actions.signin()}
-            style={styles.questionContainer}
+          onPress={() => Actions.signin()}
+          style={styles.questionContainer}
           >
-            <Text style={styles.questionText}>
-              Already signed up? Click here to sign in
-            </Text>
+          <Text style={styles.questionText}>
+          Already signed up? Click here to sign in
+          </Text>
           </TouchableOpacity>
-        </Item>
-      </Container>
-    );
-  }
-}
+          </Item>
 
-const validate = (props) => {
-  const errors = {};
-  const fields = ['firstname', 'lastname', 'email', 'password'];
+          <Item>
+          <TouchableOpacity
+          onPress={() => Actions.demo()}
+          style={styles.questionContainer}
+          >
+          <Text style={styles.questionText}>
+          Click here for nativebase demo.
+          </Text>
+          </TouchableOpacity>
+          </Item>
 
-  fields.forEach((f) => {
-    if (!(f in props)) {
-      errors[f] = `${f} is required`;
-    }
-  });
+          <Item>
+          <TouchableOpacity
+          onPress={() => Actions.demo2()}
+          style={styles.questionContainer}
+          >
+          <Text style={styles.questionText}>
+          Click here for nativebase demo2.
+          </Text>
+          </TouchableOpacity>
+          </Item>
 
-  if (props.firstname && props.firstname.length < 3) {
-    errors.firstname = 'Minimum of 3 characters';
-  } else if (props.firstname && props.firstname.length > 20) {
-    errors.firstname = 'Maximum of 20 characters';
-  }
+          <Item>
+          <TouchableOpacity
+          onPress={() => Actions.demo3()}
+          style={styles.questionContainer}
+          >
+          <Text style={styles.questionText}>
+          Click here for nativebase demo3.
+          </Text>
+          </TouchableOpacity>
+          </Item>
 
-  if (props.lastname && props.lastname.length < 3) {
-    errors.lastname = 'Minimum of 3 characters';
-  } else if (props.lastname && props.lastname.length > 20) {
-    errors.lastname = 'Maximum of 20 characters';
-  }
 
-  if (props.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(props.email)) {
-    errors.email = 'please provide valid email';
-  }
+          <Item>
+          <TouchableOpacity
+          onPress={() => Actions.demo5()}
+          style={styles.questionContainer}
+          >
+          <Text style={styles.questionText}>
+          Click here for nativebase demo5.
+          </Text>
+          </TouchableOpacity>
+          </Item>
 
-  if (props.password && props.password.length < 6) {
-    errors.password = 'minimum 6 characters';
-  }
 
-  if (props.password !== props.repassword) {
-    errors.repassword = "passwords doesn't match";
-  }
+                    <Item>
+                    <TouchableOpacity
+                    onPress={() => Actions.demo6()}
+                    style={styles.questionContainer}
+                    >
+                    <Text style={styles.questionText}>
+                    Click here for nativebase demo6.
+                    </Text>
+                    </TouchableOpacity>
+                    </Item>
+          </Container>
+          );
+        }
+      }
 
-  return errors;
-};
+      const validate = (props) => {
+        const errors = {};
+        const fields = ['firstname', 'lastname', 'email', 'password'];
 
-Signup.propTypes = propTypes;
-Signup = reduxForm({ form: 'signup', validate })(Signup);
+        fields.forEach((f) => {
+          if (!(f in props)) {
+            errors[f] = `${f} is required`;
+          }
+        });
 
-export default Signup;
+        if (props.firstname && props.firstname.length < 3) {
+          errors.firstname = 'Minimum of 3 characters';
+        } else if (props.firstname && props.firstname.length > 20) {
+          errors.firstname = 'Maximum of 20 characters';
+        }
+
+        if (props.lastname && props.lastname.length < 3) {
+          errors.lastname = 'Minimum of 3 characters';
+        } else if (props.lastname && props.lastname.length > 20) {
+          errors.lastname = 'Maximum of 20 characters';
+        }
+
+        if (props.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(props.email)) {
+          errors.email = 'please provide valid email';
+        }
+
+        if (props.password && props.password.length < 6) {
+          errors.password = 'minimum 6 characters';
+        }
+
+        if (props.password !== props.repassword) {
+          errors.repassword = "passwords doesn't match";
+        }
+
+        return errors;
+      };
+
+      Signup.propTypes = propTypes;
+      Signup = reduxForm({ form: 'signup', validate })(Signup);
+
+      export default Signup;

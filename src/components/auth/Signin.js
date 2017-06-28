@@ -36,70 +36,70 @@ class Signin extends Component {
     return (
       <Container>
 
-        <Item>
-          <Field
-            name="email"
-            component={Input}
-            placeholder="Email"
-          />
-        </Item>
+      <Item>
+      <Field
+      name="email"
+      component={Input}
+      placeholder="Email"
+      />
+      </Item>
 
-        <Item>
-          <Field
-            name="password"
-            component={Input}
-            secureTextEntry
-            placeholder="Password"
-          />
-        </Item>
+      <Item>
+      <Field
+      name="password"
+      component={Input}
+      secureTextEntry
+      placeholder="Password"
+      />
+      </Item>
 
-        {this.props.authError
-          ?
-            <Text style={styles.error}>
-              {this.props.authError}
-            </Text>
-          :
-            <View />}
+      {this.props.authError
+        ?
+        <Text style={styles.error}>
+        {this.props.authError}
+        </Text>
+        :
+        <View />}
 
         {this.props.loading
           ?
-            <Item style={styles.loadingContainer}>
-              <Spinner />
-            </Item>
+          <Item style={styles.loadingContainer}>
+          <Spinner />
+          </Item>
           :
-            <Item>
-              <Button onPress={handleSubmit(this.handleFormSubmit)}>Log in</Button>
-            </Item>}
+          <Item>
+          <Button onPress={handleSubmit(this.handleFormSubmit)}>Log in</Button>
+          </Item>}
 
-        <Item>
+          <Item>
           <TouchableOpacity
-            onPress={() => Actions.signup()}
-            style={styles.questionContainer}
+          onPress={() => Actions.signup()}
+          style={styles.questionContainer}
           >
-            <Text style={styles.questionText}>
-              Don't have an account? Click here to sign up
-            </Text>
+          <Text style={styles.questionText}>
+          Don't have an account? Click here to sign up
+          </Text>
           </TouchableOpacity>
-        </Item>
-      </Container>
-    );
-  }
-}
+          </Item>
+          </Container>
+          );
+        }
+      }
 
-const validate = (props) => {
-  const errors = {};
-  const fields = ['email', 'password'];
+      const validate = (props) => {
+        const errors = {};
+        const fields = ['email', 'password'];
 
-  fields.forEach((f) => {
-    if (!(f in props)) {
-      errors[f] = `${f} is required`;
-    }
-  });
+        fields.forEach((f) => {
+          if (!(f in props)) {
+            errors[f] = `${f} is required`;
+          }
+        });
 
-  return errors;
-};
+        return errors;
+      };
 
-Signin.propTypes = propTypes;
-Signin = reduxForm({ form: 'signin', validate })(Signin);
+      Signin.propTypes = propTypes;
+      Signin = reduxForm({ form: 'signin', validate })(Signin);
 
-export default Signin;
+      export default Signin;
